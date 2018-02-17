@@ -1,9 +1,6 @@
 # 42-FdF
-Vous decouvrirez dans ce projet les bases de la programmation graphique, et en
-particulier, le placement de points dans l’espace, comment les relier avec des
-segments et surtout comment observer la scène depuis un certain point de vue.
-
-125/100 :)
+Ce projet consiste à créer graphiquement la representation schématique d’un terrain en relief en reliant différents points (x, y, z) par des droites. Les
+coordonnées du terrain seront stockées dans un fichier passé en paramètre.
 
 ## compile
 
@@ -11,14 +8,9 @@ make
 
 ## run
 
-./fdf <map> [RRRGGGBBBAAA-RRRGGGBBBAAA] [OCEAN]
-RRR GGG BBB AAA : >= 0 && <= 255
-OCEAN : 0 || 1
+./fdf <map>
 
 ## keys
-MOVE : wasd
-ZOOM : rf
-ROTATION : rtfgvb
 
 ## map 42
 
