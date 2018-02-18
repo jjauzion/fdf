@@ -6,42 +6,19 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/12 15:00:08 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/18 20:46:34 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean, re, LIB
 
-SRC_NAME1 = ft_checker.c \
-			ft_free_stack.c \
-			ft_parser.c \
+SRC_NAME1 = main.c \
 			get_next_line.c \
-			ft_exec_cmd.c \
-			operation.c \
-			rotate_fct.c \
-			rev_rotate_fct.c \
-			ft_display.c \
-			ft_isnsorted.c
+			trace_line.c \
+			twd_right_lines.c \
+			twd_left_lines.c
 
-SRC_NAME2 = ft_push_swap.c \
-			ft_sort.c \
-			ft_sort_b.c \
-			ft_free_stack.c \
-			ft_parser.c \
-			ft_exec_cmd.c \
-			operation.c \
-			rotate_fct.c \
-			rev_rotate_fct.c \
-			ft_display.c \
-			ft_isnsorted.c \
-			ft_partition.c \
-			ft_get_pivot.c \
-			ft_get_index.c \
-			ft_sort_small_tab.c \
-			min_max_fct.c \
-			ft_fulltab5.c \
-			minmax2top.c \
-			ft_rotate_stack.c
+SRC_NAME2 = 
 
 SRC_PATH1 = src/
 
@@ -53,6 +30,9 @@ LIB_PATH = libft/
 
 LDLIBS = libftprintf.a
 
+EXT_LIB = -L /usr/local/lib/ -lmlx \
+		  -framework OpenGL -framework AppKit
+
 INC_PATH1 = libft/
 
 INC_PATH2 = includes/
@@ -63,9 +43,7 @@ INC_NAME1 = ft_printf.h \
 INC_NAME2 = header.h \
 			get_next_line.h
 
-NAME1 = checker
-
-NAME2 = push_swap
+NAME = fdf
 
 CC = gcc
 
@@ -98,13 +76,10 @@ LDFLAGS = $(addprefix $(LIB_PATH),$(LDLIBS))
 CPPFLAGS = $(addprefix -I,$(INC_PATH1)) \
 		   $(addprefix -I,$(INC_PATH2))
 
-all: LIB $(NAME1) $(NAME2)
+all: LIB $(NAME)
 
-$(NAME1): $(LDFLAGS) $(OBJ1)
-	$(CC) $(DBFLAGS) $(LDFLAGS) $(OBJ1) -o $(NAME1)
-
-$(NAME2): $(LDFLAGS) $(OBJ2)
-	$(CC) $(DBFLAGS) $(LDFLAGS) $(OBJ2) -o $(NAME2)
+$(NAME): $(LDFLAGS) $(OBJ1) $(OBJ2)
+	$(CC) $(DBFLAGS) $(LDFLAGS) $(EXT_LIB) $(OBJ1) $(OBJ2) -o $(NAME)
 
 LIB:
 	make -C libft
