@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/18 20:44:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:51:28 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ typedef struct	s_line
 	t_point2d	*p2;
 }				t_line;
 
+t_point3d		**init_tab3d(char *file, t_point3d ***tab, int *x_max, int *z_max);
+t_point2d		**init_tab2d(int x_max, int z_max);
+void			free_tab3d(t_point3d ***tab, int z_max);
+void			free_tab2d(t_point2d ***tab, int z_max);
+int				parser(char *file, t_point3d **tab);
+void			print_tab3d(t_point3d **tab, int x_max, int z_max);
+void			print_tab2d(t_point2d **tab, int x_max, int z_max);
+void			proj_cav(t_point3d **tab3, t_point2d **tab2, int x_max, int z_max);
+
 void			trace_line(void *mlw_ptr, void *win_ptr, t_point2d p1, t_point2d p2);
 void			twd_right_line(void *mlw_ptr, void *win_ptr, t_line line);
 void			octant_1(void *mlw_ptr, void *win_ptr, t_line line);
@@ -52,6 +61,10 @@ void			octant_4(void *mlw_ptr, void *win_ptr, t_line line);
 void			octant_3(void *mlw_ptr, void *win_ptr, t_line line);
 void			octant_5(void *mlw_ptr, void *win_ptr, t_line line);
 void			octant_6(void *mlw_ptr, void *win_ptr, t_line line);
+void			horizontal_RH_line(void *mlw_ptr, void *win_ptr, t_line line);
+void			horizontal_LH_line(void *mlw_ptr, void *win_ptr, t_line line);
+void			vertical_UP_line(void *mlw_ptr, void *win_ptr, t_line line);
+void			vertical_DW_line(void *mlw_ptr, void *win_ptr, t_line line);
 
 #endif
 

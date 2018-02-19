@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:18:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/11/16 09:45:57 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/19 11:45:10 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char				**ft_strsplit(char const *s, char c)
 		i++;
 	}
 	tab[i] = 0;
+	free(index[0]);
+	free(index[1]);
 	free(index);
 	return (tab);
 }

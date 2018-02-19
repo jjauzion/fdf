@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:41:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/18 20:46:11 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/19 09:57:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	twd_right_line(void *mlx_ptr, void *win_ptr, t_line line)
 		else
 			octant_7(mlx_ptr, win_ptr, line);
 	}
-//	else
-//		horizontal_line(mlx_ptr, win_ptr, line);
+	else
+		horizontal_RH_line(mlx_ptr, win_ptr, line);
 }
 
 void	twd_left_line(void *mlx_ptr, void *win_ptr, t_line line)
@@ -48,8 +48,8 @@ void	twd_left_line(void *mlx_ptr, void *win_ptr, t_line line)
 		else
 			octant_6(mlx_ptr, win_ptr, line);
 	}
-//	else
-//		horizontal_line(mlx_ptr, win_ptr, line);
+	else
+		horizontal_LH_line(mlx_ptr, win_ptr, line);
 }
 
 void	trace_line(void *mlx_ptr, void *win_ptr, t_point2d p1, t_point2d p2)
@@ -64,6 +64,8 @@ void	trace_line(void *mlx_ptr, void *win_ptr, t_point2d p1, t_point2d p2)
 		twd_right_line(mlx_ptr, win_ptr, line);
 	else if (line.dx < 0)
 		twd_left_line(mlx_ptr, win_ptr, line);
-/*	else
-		vertical_line(mlx_ptr, win_ptr, line);
-*/}
+	else if (line.dz > 0)
+		vertical_UP_line(mlx_ptr, win_ptr, line);
+	else if (line.dz < 0)
+		vertical_DW_line(mlx_ptr, win_ptr, line);
+}

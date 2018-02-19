@@ -6,17 +6,22 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/18 20:46:34 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/19 12:47:21 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean, re, LIB
 
 SRC_NAME1 = main.c \
-			get_next_line.c \
 			trace_line.c \
 			twd_right_lines.c \
-			twd_left_lines.c
+			twd_left_lines.c \
+			ver_hor_lines.c \
+			init_tab.c \
+			free_tab.c \
+			parser.c \
+			print_tab.c \
+			projection.c
 
 SRC_NAME2 = 
 
@@ -37,11 +42,9 @@ INC_PATH1 = libft/
 
 INC_PATH2 = includes/
 
-INC_NAME1 = ft_printf.h \
-			libft.h
+INC_NAME1 = ft_printf.h
 
-INC_NAME2 = header.h \
-			get_next_line.h
+INC_NAME2 = header.h
 
 NAME = fdf
 
