@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:04 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 12:25:33 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/19 19:48:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_point3d	**init_tab3d(char *file, t_point3d ***tab, int *x_max, int *z_max)
 	int		ret;
 	int		i;
 	int		fd;
+	int		tmp;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
@@ -46,6 +47,8 @@ t_point3d	**init_tab3d(char *file, t_point3d ***tab, int *x_max, int *z_max)
 		(*z_max)++;
 		if (*x_max < 0)
 			*x_max = get_xmax(line);
+		else if ((tmp = get_xmax(line)) != *x_max)
+			return (NULL);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);

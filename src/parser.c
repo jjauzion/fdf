@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:37 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 12:02:42 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/19 18:44:49 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	parse_line(char *line, t_point3d *tab, int z)
 	x = 0;
 	while (value[x])
 	{
-		tab[x].x = x;
-		tab[x].z = z;
+		tab[x].x = x * DEF_SCALE;
+		tab[x].z = z * DEF_SCALE;
 		tab[x].y = ft_atoi(value[x]);
 		x++;
 	}

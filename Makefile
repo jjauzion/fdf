@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/19 12:47:21 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/19 18:53:10 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ SRC_NAME1 = main.c \
 			free_tab.c \
 			parser.c \
 			print_tab.c \
-			projection.c
+			projection.c \
+			tracer.c \
+			center2window.c \
+			axis_sys_change.c
 
 SRC_NAME2 = 
 
