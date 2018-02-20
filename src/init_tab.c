@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:04 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 19:48:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/20 12:13:31 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,27 @@ static int	get_xmax(char *line)
 	return (x_max - 1);
 }
 
-t_point3d	**init_tab3d(char *file, t_point3d ***tab, int *x_max, int *z_max)
+t_point3d	**malloc_tab3(int x_max, int z_max)
 {
-	char	*line;
-	int		ret;
-	int		i;
-	int		fd;
-	int		tmp;
+	t_point3d	**tab;
+	int			i;
+
+	if (!(tab = (t_point3d**)malloc(sizeof(t_point3d*) * (z_max + 1))))
+		return (NULL);
+	i = z_max + 1;
+	while (--i >= 0)
+		if (!(tab[i] = (t_point3d*)malloc(sizeof(t_point3d) * (x_max + 1))))
+			return (NULL);
+	return (tab);
+}
+
+t_point3d	**init_tab3d(char *file, int *x_max, int *z_max)
+{
+	char		*line;
+	int			ret;
+	int			fd;
+	int			tmp;
+	t_point3d	**tab;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
@@ -52,17 +66,12 @@ t_point3d	**init_tab3d(char *file, t_point3d ***tab, int *x_max, int *z_max)
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	if (!(*tab = (t_point3d**)malloc(sizeof(t_point3d*) * (*z_max + 1))))
-		return (NULL);
-	i = *z_max + 1;
-	while (--i >= 0)
-		if (!((*tab)[i] = (t_point3d*)malloc(sizeof(t_point3d) * (*x_max + 1))))
-			return (NULL);
+	tab = malloc_tab3(*x_max, *z_max);
 	close(fd);
-	return (*tab);
+	return (tab);
 }
 
-t_point2d	**init_tab2d(int x_max, int z_max)
+t_point2d	**malloc_tab2(int x_max, int z_max)
 {
 	t_point2d	**tab;
 

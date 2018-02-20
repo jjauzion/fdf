@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/19 18:53:10 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/20 20:14:27 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,11 @@ SRC_NAME1 = main.c \
 			print_tab.c \
 			projection.c \
 			tracer.c \
+			center2camera.c \
 			center2window.c \
-			axis_sys_change.c
+			axis_sys_change.c \
+			event_hook.c \
+			update_view.c
 
 SRC_NAME2 = 
 
@@ -60,7 +63,7 @@ ifdef FLAG
 endif
 ifeq ($(FLAG), debug)
 	CFLAGS = -Wall -Wextra -Werror
-	DBFLAGS = -g
+	DBFLAGS = -g3 -fsanitize=address
 endif
 else
 	CFLAGS = -Wall -Wextra -Werror

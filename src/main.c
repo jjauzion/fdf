@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 20:03:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 18:56:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/20 20:16:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ int		main(int argc, char **argv)
 	int			win_height;
 
 	if (argc != 2)
+	{
+		perror("Error ");
 		return (1);
-	if (!(tab3 = init_tab3d(argv[1], &tab3, &x_max, &z_max)))
+	}
+	if (!(tab3 = init_tab3d(argv[1], &x_max, &z_max)))
 		return (1);
 	parser(argv[1], tab3);
-	if (!(tab2 = init_tab2d(x_max, z_max)))
+	if (!(tab2 = malloc_tab2(x_max, z_max)))
 		return (1);
-	proj_iso(tab3, tab2, x_max, z_max);
-	center2window(tab2, x_max, z_max, &win_width, &win_height);
-	tracer(tab2, x_max, z_max, win_width, win_height);
+	center2camera(tab3, x_max, z_max, &win_width, &win_height);
+	proj_iso(tab3, tab2, x_max, z_max, 1);
+	tracer(tab3, tab2, x_max, z_max, win_width, win_height);
 	free_tab3d(&tab3, z_max);
 	free_tab2d(&tab2, z_max);
 }
