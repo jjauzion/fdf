@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 18:45:18 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 20:24:09 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void		keyhandler(t_data *data, int key)
 	if (key == 124)
 		translation(data, DEF_SHIFT, 0);
 	if (key == 125)
-		translation(data, 0, -DEF_SHIFT);
-	if (key == 126)
 		translation(data, 0, DEF_SHIFT);
+	if (key == 126)
+		translation(data, 0, -DEF_SHIFT);
 	if (key == 0)
 		rotationX(data, ROT_ANGLE);
 	if (key == 2)
@@ -40,6 +40,8 @@ void		keyhandler(t_data *data, int key)
 		rotationY(data, ROT_ANGLE);
 	if (key == 13)
 		rotationY(data, -ROT_ANGLE);
+	if (key == 15)
+		rotationY(data, 90);
 }
 
 void		print2screen(void *param, int key)
