@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 15:29:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 17:55:53 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define WIN_MARGIN 50 
 # define DEF_SCALE 20 
+# define DEF_SHIFT 20 
+# define ROT_ANGLE 5. 
 # define MAX_WIDTH 1600
 # define MAX_HEIGHT 1000
 
@@ -34,12 +36,6 @@ typedef struct	s_point2d
 	double		x;
 	double		z;
 }				t_point2d;
-
-typedef struct	s_limit
-{
-	int			i;
-	int			j;
-}				t_limit;
 
 typedef struct	s_line
 {
@@ -71,27 +67,29 @@ void			print_tab2d(t_point2d **tab, int x_max, int z_max);
 void			display(t_data *data, int width, int height);
 void			trace_grid(t_data *data);
 void			proj_iso(t_data *data);
-void			translation(t_data *data, int x_off, int z_off);
-void			scale_factor(t_data *data, double factor);
 void			center2camera(t_data *data, int *win_width, int *win_height);
 int				key_hook(int keycode, void *param);
 void			print2screen(void *param, int key);
+void			translation(t_data *data, int x_off, int z_off);
+void			scale_factor(t_data *data, double factor);
+void			rotationX(t_data *data, double angle);
+void			rotationY(t_data *data, double angle);
 
-void			trace_line(void *mlw_ptr, void *win_ptr, t_point2d p1, t_point2d p2);
-void			twd_right_line(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_1(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_2(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_8(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_7(void *mlw_ptr, void *win_ptr, t_line line);
-void			twd_left_line(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_4(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_3(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_5(void *mlw_ptr, void *win_ptr, t_line line);
-void			octant_6(void *mlw_ptr, void *win_ptr, t_line line);
-void			horizontal_RH_line(void *mlw_ptr, void *win_ptr, t_line line);
-void			horizontal_LH_line(void *mlw_ptr, void *win_ptr, t_line line);
-void			vertical_UP_line(void *mlw_ptr, void *win_ptr, t_line line);
-void			vertical_DW_line(void *mlw_ptr, void *win_ptr, t_line line);
+void			trace_line(t_data *data, t_point2d p1, t_point2d p2, char option);
+void			twd_right_line(t_data *data, t_line line, char option);
+void			octant_1(t_data *data, t_line line, char option);
+void			octant_2(t_data *data, t_line line, char option);
+void			octant_8(t_data *data, t_line line, char option);
+void			octant_7(t_data *data, t_line line, char option);
+void			twd_left_line(t_data *data, t_line line, char option);
+void			octant_4(t_data *data, t_line line, char option);
+void			octant_3(t_data *data, t_line line, char option);
+void			octant_5(t_data *data, t_line line, char option);
+void			octant_6(t_data *data, t_line line, char option);
+void			horizontal_RH_line(t_data *data, t_line line, char option);
+void			horizontal_LH_line(t_data *data, t_line line, char option);
+void			vertical_UP_line(t_data *data, t_line line, char option);
+void			vertical_DW_line(t_data *data, t_line line, char option);
 
 #endif
 

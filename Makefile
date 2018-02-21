@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/21 15:40:55 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/21 17:11:48 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ SRC_NAME1 = main.c \
 			projection.c \
 			display.c \
 			center2camera.c \
-			axis_sys_change.c \
 			event_hook.c \
 			print2screen.c \
-			trace_grid.c
+			trace_grid.c \
+			3d_operation.c
 
 SRC_NAME2 = 
 
