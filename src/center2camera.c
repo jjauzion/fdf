@@ -6,13 +6,14 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:43:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/20 20:17:37 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 15:47:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static int			check_scale(t_point2d **tab, int j_max, int i_max, double *factor)
+static int			check_scale(t_point2d **tab, int j_max, int i_max,
+		double *factor)
 {
 	double	data_width;
 	double	data_height;
@@ -30,35 +31,41 @@ static int			check_scale(t_point2d **tab, int j_max, int i_max, double *factor)
 		return (0);
 }
 
-static t_point2d	**proj_corner(t_point3d **tab, int j_max, int i_max)
+static t_point2d	**proj_corner(t_data *data)
 {
 	t_point3d	**corner3;
 	t_point2d	**corner2;
+	t_data		tmp;
 
 	if (!(corner3 = malloc_tab3(1, 1)))
 		return (NULL);
 	if (!(corner2 = malloc_tab2(1, 1)))
 		return (NULL);
-	corner3[0][0] = tab[0][0];
-	corner3[1][0] = tab[i_max][0];
-	corner3[1][1] = tab[i_max][j_max];
-	corner3[0][1] = tab[0][j_max];
-	proj_iso(corner3, corner2, 1, 1, 1);
+	corner3[0][0] = data->tab3[0][0];
+	corner3[1][0] = data->tab3[data->imax][0];
+	corner3[1][1] = data->tab3[data->imax][data->jmax];
+	corner3[0][1] = data->tab3[0][data->jmax];
+	tmp.tab3 = corner3;
+	tmp.tab2 = corner2;
+	tmp.imax = 1;
+	tmp.jmax = 1;
+	tmp.height_factor = 1;
+	proj_iso(&tmp);
 	free_tab3d(&corner3, 1);
 	return (corner2);
 }
 
-static int			set_window(t_point3d **tab, int j_max, int i_max, int *win_width, int *win_height)
+static int			set_window(t_data *data, int *win_width, int *win_height)
 {
 	double		factor;
 	t_point2d	**corner2;
 
-	if (!(corner2 = proj_corner(tab, j_max, i_max)))
+	if (!(corner2 = proj_corner(data)))
 		return (1);
 	if (check_scale(corner2, 1, 1, &factor))
-		scale_factor3d(tab, j_max, i_max, factor);
+		scale_factor(data, factor);
 	free_tab2d(&corner2, 1);
-	if (!(corner2 = proj_corner(tab, j_max, i_max)))
+	if (!(corner2 = proj_corner(data)))
 		return (1);
 	*win_width = corner2[0][1].x - corner2[1][0].x + 2 * WIN_MARGIN;
 	*win_height = corner2[1][1].z - corner2[0][0].z + 2 * WIN_MARGIN;
@@ -66,17 +73,20 @@ static int			set_window(t_point3d **tab, int j_max, int i_max, int *win_width, i
 	return (0);
 }
 
-void				center2camera(t_point3d **tab, int j_max, int i_max, int *win_width, int *win_height)
+void				center2camera(t_data *data, int *win_width, int *win_height)
 {
 	int			x_offset;
 	int			z_offset;
 	int			xc_cartesian;
 	int			zc_cartesian;
+	int			centerofdata;
 
-	set_window(tab, j_max, i_max, win_width, win_height);
+	set_window(data, win_width, win_height);
 	xc_cartesian = (*win_height + *win_width / 2) / 2;
-	x_offset = xc_cartesian - (tab[0][j_max].x + tab[i_max][0].x) / 2;
+	centerofdata = (data->tab3[0][data->jmax].x + data->tab3[data->imax][0].x) / 2;
+	x_offset = xc_cartesian - centerofdata;
 	zc_cartesian = (*win_height - *win_width / 2) / 2;
-	z_offset = zc_cartesian - (tab[0][j_max].z + tab[i_max][0].z) / 2;
-	translation3d(tab, j_max, i_max, x_offset, z_offset);
+	centerofdata = (data->tab3[0][data->jmax].z + data->tab3[data->imax][0].z) / 2;
+	z_offset = zc_cartesian - centerofdata;
+	translation(data, x_offset, z_offset);
 }

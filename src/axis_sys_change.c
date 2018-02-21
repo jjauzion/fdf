@@ -6,73 +6,44 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 14:52:26 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/20 13:10:42 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 12:58:29 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void		translation3d(t_point3d **tab, int x_max, int z_max, int x_off, int z_off)
+void		translation(t_data *data, int x_off, int z_off)
 {
 	int	x;
+	int	z;
 
-	while (z_max >= 0)
+	z = data->imax;
+	while (z >= 0)
 	{
 		x = -1;
-		while (++x <= x_max)
+		while (++x <= data->jmax)
 		{
-			tab[z_max][x].x += (double)x_off;
-			tab[z_max][x].z += (double)z_off;
+			data->tab3[z][x].x += (double)x_off;
+			data->tab3[z][x].z += (double)z_off;
 		}
-		z_max--;
+		z--;
 	}
 }
 
-
-void		translation(t_point2d **tab, int x_max, int z_max, int x_off, int z_off)
+void		scale_factor(t_data *data, double factor)
 {
 	int	x;
+	int	z;
 
-	while (z_max >= 0)
+	z = data->imax;
+	while (z >= 0)
 	{
 		x = -1;
-		while (++x <= x_max)
+		while (++x <= data->jmax)
 		{
-			tab[z_max][x].x += (double)x_off;
-			tab[z_max][x].z += (double)z_off;
+			data->tab3[z][x].x = data->tab3[z][x].x * factor;
+			data->tab3[z][x].z = data->tab3[z][x].z * factor;
 		}
-		z_max--;
-	}
-}
-
-void		scale_factor3d(t_point3d **tab, int x_max, int z_max, double factor)
-{
-	int	x;
-
-	while (z_max >= 0)
-	{
-		x = -1;
-		while (++x <= x_max)
-		{
-			tab[z_max][x].x = tab[z_max][x].x * factor;
-			tab[z_max][x].z = tab[z_max][x].z * factor;
-		}
-		z_max--;
-	}
-}
-
-void		scale_factor(t_point2d **tab, int x_max, int z_max, double factor)
-{
-	int	x;
-
-	while (z_max >= 0)
-	{
-		x = -1;
-		while (++x <= x_max)
-		{
-			tab[z_max][x].x = tab[z_max][x].x * factor;
-			tab[z_max][x].z = tab[z_max][x].z * factor;
-		}
-		z_max--;
+		z--;
 	}
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_hook.c                                       :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 10:33:19 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 15:31:41 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/21 15:40:39 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/21 15:40:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		key_hook(int keycode, void *param)
+static void	init_window(t_data *data, int width, int height)
 {
-	print2screen(param, keycode);
-	return (0);
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, width, height, "fdf");
+}
+
+void		display(t_data *data, int width, int height)
+{
+	init_window(data, width, height);
+	print2screen(data, 54);
+	mlx_key_hook(data->win, key_hook, (void*)data);
+	mlx_loop(data->mlx);
 }

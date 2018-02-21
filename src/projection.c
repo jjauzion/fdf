@@ -6,26 +6,28 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:43:08 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/20 20:16:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 14:45:09 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void		proj_iso(t_point3d **tab3, t_point2d **tab2, int x_max, int z_max, int factor)
+void		proj_iso(t_data *data)
 {
 	int x;
+	int	z;
 
-	while (z_max >= 0)
+	z = data->imax;
+	while (z >= 0)
 	{
 		x = -1;
-		while (++x <= x_max)
+		while (++x <= data->jmax)
 		{
-			tab2[z_max][x].x = (double)(tab3[z_max][x].x - tab3[z_max][x].z);
-			tab2[z_max][x].z = (double)(tab3[z_max][x].x + tab3[z_max][x].z) / 2.;
-			tab2[z_max][x].z -= (double)tab3[z_max][x].y * (double)factor;
+			data->tab2[z][x].x = (double)(data->tab3[z][x].x - data->tab3[z][x].z);
+			data->tab2[z][x].z = (double)(data->tab3[z][x].x + data->tab3[z][x].z) / 2.;
+			data->tab2[z][x].z -= (double)data->tab3[z][x].y * (double)data->height_factor;
 		}
-		z_max--;
+		z--;
 	}
 }
 /*

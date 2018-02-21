@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 19:57:30 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/20 20:18:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 14:50:11 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	update_view(int key, void *param)
 {
-	t_view_data	*view;
+	t_data	*data;
 
-	view = (t_view_data*)param;
+	data = (t_data*)param;
 	if (key == 78)
-		view->height_factor--;
+		data->height_factor--;
 	if (key == 69)
-		view->height_factor++;
-	proj_iso(view->tab3, view->tab2, view->jmax, view->imax, view->height_factor);
-	trace_grid(view->mlx, view->win, view->tab2, view->jmax, view->imax);
+		data->height_factor++;
+	proj_iso(data);
+	mlx_clear_window(data->mlx, data->win);
+	trace_grid(data);
 }

@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print2screen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 20:03:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 15:37:54 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/21 15:39:00 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		main(int argc, char **argv)
+void		keyhandler(t_data *data, int key)
 {
-	int			win_width;
-	int			win_height;
-	t_data		data;
-
-	if (argc != 2)
+	if (key == 53)
 	{
-		perror("Error ");
-		return (1);
+		free_tab3d(&(data->tab3), data->imax);
+		free_tab2d(&(data->tab2), data->imax);
+		exit(EXIT_SUCCESS);
 	}
-	if (!(data.tab3 = init_tab3d(argv[1], &data)))
-		return (1);
-	parser(argv[1], data.tab3);
-	if (!(data.tab2 = malloc_tab2(data.jmax, data.imax)))
-		return (1);
-	center2camera(&data, &win_width, &win_height);
-	data.height_factor = 1;
-	display(&data, win_width, win_height);
-	return (0);
+	if (key == 78)
+		data->height_factor--;
+	if (key == 69)
+		data->height_factor++;
+}
+
+void		print2screen(void *param, int key)
+{
+	t_data	*data;
+
+	data = (t_data*)param;
+	keyhandler(data, key);
+	proj_iso(data);
+	mlx_clear_window(data->mlx, data->win);
+	trace_grid(data);
 }

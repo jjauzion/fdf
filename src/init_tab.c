@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:04 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/20 12:13:31 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 12:08:32 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ static int	get_xmax(char *line)
 	return (x_max - 1);
 }
 
+t_point2d	**malloc_tab2(int x_max, int z_max)
+{
+	t_point2d	**tab;
+
+	if (!(tab = (t_point2d**)malloc(sizeof(t_point2d*) * (z_max + 1))))
+		return (NULL);
+	while (z_max >= 0)
+	{
+		if (!(tab[z_max] = (t_point2d*)malloc(sizeof(t_point2d) * (x_max + 1))))
+			return (NULL);
+		z_max--;
+	}
+	return (tab);
+}
+
 t_point3d	**malloc_tab3(int x_max, int z_max)
 {
 	t_point3d	**tab;
@@ -44,7 +59,7 @@ t_point3d	**malloc_tab3(int x_max, int z_max)
 	return (tab);
 }
 
-t_point3d	**init_tab3d(char *file, int *x_max, int *z_max)
+t_point3d	**init_tab3d(char *file, t_data *data)
 {
 	char		*line;
 	int			ret;
@@ -54,34 +69,19 @@ t_point3d	**init_tab3d(char *file, int *x_max, int *z_max)
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
-	*z_max = -1;
-	*x_max = -1;
+	data->imax = -1;
+	data->jmax = -1;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		(*z_max)++;
-		if (*x_max < 0)
-			*x_max = get_xmax(line);
-		else if ((tmp = get_xmax(line)) != *x_max)
+		(data->imax)++;
+		if (data->jmax < 0)
+			data->jmax = get_xmax(line);
+		else if ((tmp = get_xmax(line)) != data->jmax)
 			return (NULL);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	tab = malloc_tab3(*x_max, *z_max);
+	tab = malloc_tab3(data->jmax, data->imax);
 	close(fd);
-	return (tab);
-}
-
-t_point2d	**malloc_tab2(int x_max, int z_max)
-{
-	t_point2d	**tab;
-
-	if (!(tab = (t_point2d**)malloc(sizeof(t_point2d*) * (z_max + 1))))
-		return (NULL);
-	while (z_max >= 0)
-	{
-		if (!(tab[z_max] = (t_point2d*)malloc(sizeof(t_point2d) * (x_max + 1))))
-			return (NULL);
-		z_max--;
-	}
 	return (tab);
 }

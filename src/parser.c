@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:37 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 18:44:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 15:43:42 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	parse_line(char *line, t_point3d *tab, int z)
 	return (0);
 }
 
-int		parser(char *file, t_point3d **tab)
+int			parser(char *file, t_point3d **tab)
 {
 	int			fd;
 	int			ret;
