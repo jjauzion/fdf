@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:43:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 15:47:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 18:46:26 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,17 @@ static int			set_window(t_data *data, int *win_width, int *win_height)
 
 void				center2camera(t_data *data, int *win_width, int *win_height)
 {
-	int			x_offset;
-	int			z_offset;
-	int			xc_cartesian;
-	int			zc_cartesian;
-	int			centerofdata;
+	int			centerofWindow_x;
+	int			centerofWindow_z;
+	int			centerofdata_x;
+	int			centerofdata_z;
 
 	set_window(data, win_width, win_height);
-	xc_cartesian = (*win_height + *win_width / 2) / 2;
-	centerofdata = (data->tab3[0][data->jmax].x + data->tab3[data->imax][0].x) / 2;
-	x_offset = xc_cartesian - centerofdata;
-	zc_cartesian = (*win_height - *win_width / 2) / 2;
-	centerofdata = (data->tab3[0][data->jmax].z + data->tab3[data->imax][0].z) / 2;
-	z_offset = zc_cartesian - centerofdata;
-	translation(data, x_offset, z_offset);
+	centerofdata_x = (data->tab3[0][data->jmax].x + data->tab3[data->imax][0].x) / 2;
+	centerofdata_z = (data->tab3[0][data->jmax].z + data->tab3[data->imax][0].z) / 2;
+	translation(data, -centerofdata_x, -centerofdata_z);
+	centerofWindow_x = (*win_height + *win_width / 2) / 2;
+	centerofWindow_z = (*win_height - *win_width / 2) / 2;
+	data->x_offset = centerofWindow_x;
+	data->z_offset = centerofWindow_z;
 }

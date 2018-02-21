@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:43:08 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 14:45:09 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 18:42:07 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,24 @@
 
 void		proj_iso(t_data *data)
 {
-	int x;
-	int	z;
+	int j;
+	int	i;
+	double	x;
+	double	z;
+//	double	y;
 
-	z = data->imax;
-	while (z >= 0)
-	{
-		x = -1;
-		while (++x <= data->jmax)
-		{
-			data->tab2[z][x].x = (double)(data->tab3[z][x].x - data->tab3[z][x].z);
-			data->tab2[z][x].z = (double)(data->tab3[z][x].x + data->tab3[z][x].z) / 2.;
-			data->tab2[z][x].z -= (double)data->tab3[z][x].y * (double)data->height_factor;
-		}
-		z--;
-	}
-}
-/*
-void		proj_cav(t_point3d **tab3, t_point2d **tab2, int x_max, int z_max)
-{
-	int		i;
-	int		j;
-	double	rad_a;
-
-	rad_a = ALPHA * M_PI / 180.;
-	i = -1;
-	while (++i <= z_max)
+	i = data->imax;
+	while (i >= 0)
 	{
 		j = -1;
-		while (++j <= x_max)
+		while (++j <= data->jmax)
 		{
-			tab2[i][j].x = (double)tab3[i][j].x + COEF * cos(rad_a) * (double)tab3[i][j].y;
-			tab2[i][j].z = (double)tab3[i][j].z - COEF * sin(rad_a) * (double)tab3[i][j].y;
+			x = data->tab3[i][j].x + data->x_offset;
+			z = data->tab3[i][j].z + data->z_offset;
+			data->tab2[i][j].x = x - z;
+			data->tab2[i][j].z = (x + z) / 2.;
+			data->tab2[i][j].z -= (double)data->tab3[i][j].y * (double)data->height_factor;
 		}
+		i--;
 	}
-}*/
+}

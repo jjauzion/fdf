@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 17:55:53 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/21 18:49:24 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define WIN_MARGIN 50 
 # define DEF_SCALE 20 
 # define DEF_SHIFT 20 
-# define ROT_ANGLE 5. 
+# define ROT_ANGLE 90. 
 # define MAX_WIDTH 1600
 # define MAX_HEIGHT 1000
 
@@ -51,6 +51,8 @@ typedef struct	s_data
 	void		*win;
 	t_point3d	**tab3;
 	t_point2d	**tab2;
+	int			x_offset;
+	int			z_offset;
 	int			imax;
 	int			jmax;
 	int			height_factor;
