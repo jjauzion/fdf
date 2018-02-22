@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/21 17:11:48 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/22 20:44:58 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRC_NAME1 = main.c \
 			event_hook.c \
 			print2screen.c \
 			trace_grid.c \
-			3d_operation.c
+			3d_operation.c \
+			ft_rgb2tsv.c \
+			ft_tsv2rgb.c \
+			pixel_put.c
 
 SRC_NAME2 = 
 
@@ -104,7 +107,7 @@ clean:
 
 fclean: clean
 	make -C libft fclean
-	rm -fv $(NAME1) $(NAME2)
+	rm -fv $(NAME)
 
 re: fclean all
 

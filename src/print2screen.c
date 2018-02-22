@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 20:24:09 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/22 11:48:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void		keyhandler(t_data *data, int key)
 		free_tab2d(&(data->tab2), data->imax);
 		exit(EXIT_SUCCESS);
 	}
-	if (key == 78)
+	if (key == 78 || key == 27)
 		data->height_factor--;
-	if (key == 69)
+	if (key == 69 || key == 24)
 		data->height_factor++;
 	if (key == 123)
 		translation(data, -DEF_SHIFT, 0);

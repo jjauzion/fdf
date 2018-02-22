@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 20:27:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/22 20:19:56 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_point2d
 {
 	double		x;
 	double		z;
+	int			height;
 }				t_point2d;
 
 typedef struct	s_line
@@ -58,6 +59,10 @@ typedef struct	s_data
 	int			height_factor;
 }				t_data;
 
+int				ft_rgb2tsv(int rgb, int *t, int *s, int *v);
+int				ft_tsv2rgb(int t, int s, int v);
+
+t_point2d		**init_tab2d(t_point3d **tab3, int jmax, int imax);
 t_point3d		**init_tab3d(char *file, t_data *data);
 t_point3d		**malloc_tab3(int x_max, int z_max);
 t_point2d		**malloc_tab2(int x_max, int z_max);
@@ -76,6 +81,7 @@ void			translation(t_data *data, int x_off, int z_off);
 void			scale_factor(t_data *data, double factor);
 void			rotationX(t_data *data, double angle);
 void			rotationY(t_data *data, double angle);
+void			pixel_put(t_data *data, t_point2d *p, char option);
 
 void			trace_line(t_data *data, t_point2d p1, t_point2d p2, char option);
 void			twd_right_line(t_data *data, t_line line, char option);
