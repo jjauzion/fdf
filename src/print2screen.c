@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 11:48:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/23 11:57:55 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void		keyhandler(t_data *data, int key)
 		rotationY(data, -ROT_ANGLE);
 	if (key == 15)
 		rotationY(data, 90);
+	if (key == 8)
+		data->option = (data->option == 'c') ? '\0' : 'c';
 }
 
 void		print2screen(void *param, int key)
@@ -52,5 +54,5 @@ void		print2screen(void *param, int key)
 	keyhandler(data, key);
 	proj_iso(data);
 	mlx_clear_window(data->mlx, data->win);
-	trace_grid(data);
+	trace_grid(data, data->option);
 }

@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/22 20:44:58 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/23 16:45:53 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC_NAME1 = main.c \
 			3d_operation.c \
 			ft_rgb2tsv.c \
 			ft_tsv2rgb.c \
-			pixel_put.c
+			pixel_put.c \
+			color_scale.c
 
 SRC_NAME2 = 
 

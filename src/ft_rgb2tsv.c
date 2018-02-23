@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:58:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 19:59:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/23 14:27:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int			ft_rgb2tsv(int rgb, int *t, int *s, int *v)
 	if (max == min)
 		*t = 0;
 	else if (max == color[0])
-		*t = 60 * (color[1] - color[2]) / (max - min) + 360;
+		*t = (60 * (color[1] - color[2]) / (max - min) + 360) % 360;
 	else if (max == color[1])
 		*t = 60 * (color[2] - color[0]) / (max - min) + 120;
 	else
 		*t = 60 * (color[0] - color[1]) / (max - min) + 240;
 	*s = (max == 0) ? 0 : 100 - (int)(100. * (double)min / (double)max);
-	*v = 100 * ((double)max / 255.);
+	*v = (int)(100. * ((double)max / 255.));
 	free(color);
 	return (0);
 }

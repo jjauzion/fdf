@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 20:19:56 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/23 16:45:34 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct	s_data
 	int			imax;
 	int			jmax;
 	int			height_factor;
+	char		option;
+	int			**color;
 }				t_data;
 
 int				ft_rgb2tsv(int rgb, int *t, int *s, int *v);
@@ -72,7 +74,7 @@ int				parser(char *file, t_point3d **tab);
 void			print_tab3d(t_point3d **tab, int x_max, int z_max);
 void			print_tab2d(t_point2d **tab, int x_max, int z_max);
 void			display(t_data *data, int width, int height);
-void			trace_grid(t_data *data);
+void			trace_grid(t_data *data, char option);
 void			proj_iso(t_data *data);
 void			center2camera(t_data *data, int *win_width, int *win_height);
 int				key_hook(int keycode, void *param);
@@ -82,6 +84,7 @@ void			scale_factor(t_data *data, double factor);
 void			rotationX(t_data *data, double angle);
 void			rotationY(t_data *data, double angle);
 void			pixel_put(t_data *data, t_point2d *p, char option);
+int				**color_scale(char *scale_color);
 
 void			trace_line(t_data *data, t_point2d p1, t_point2d p2, char option);
 void			twd_right_line(t_data *data, t_line line, char option);
