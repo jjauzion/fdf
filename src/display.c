@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:40:39 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/23 11:51:10 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 11:30:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	init_window(t_data *data, int width, int height)
 void		display(t_data *data, int width, int height)
 {
 	init_window(data, width, height);
-	print2screen(data, 54);
+	print2screen(data, 54, 0, 0);
 	mlx_key_hook(data->win, key_hook, (void*)data);
+	mlx_mouse_hook(data->win, mouse_hook, (void*)data);
 	mlx_loop(data->mlx);
 }

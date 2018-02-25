@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:26:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/23 16:48:52 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 11:03:09 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	mountains(int **scale)
 {
 	scale[0][0] = 5;
-	scale[0][1] = 1;
+	scale[0][1] = 0;
 	scale[1][1] = 0x1962E1;
-	scale[0][2] = 1;
+	scale[0][2] = 0;
 	scale[1][2] = 0x009A00;
 	scale[0][3] = 20;
 	scale[1][3] = 0x9A5700;
@@ -32,11 +32,11 @@ int			**color_scale(char *scale_color)
 	int	**scale;
 	int	i;
 
-	if (!(scale = (int**)malloc(sizeof(int*) * 6)))
+	if (!(scale = (int**)malloc(sizeof(int*) * 2)))
 		return (NULL);
 	i = -1;
-	while (++i < 6)
-		if (!(scale[i] = (int*)malloc(sizeof(int) * 2)))
+	while (++i < 2)
+		if (!(scale[i] = (int*)malloc(sizeof(int) * 6)))
 			return (NULL);
 	if (ft_strequ(scale_color, "MOUTAINS"))
 		mountains(scale);

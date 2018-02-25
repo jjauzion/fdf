@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 17:11:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 20:31:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 12:35:59 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,14 @@ void		scale_factor(t_data *data, double factor)
 		}
 		i--;
 	}
+}
+
+void		zoom(t_data *data, int x, int y, char option)
+{
+	(void)x;
+	(void)y;
+	if (option == 'i')
+		scale_factor(data, ZOOM);
+	if (option == 'o')
+		scale_factor(data, 1. / ZOOM);
 }

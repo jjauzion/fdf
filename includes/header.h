@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/23 16:45:34 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 12:36:56 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ROT_ANGLE 10. 
 # define MAX_WIDTH 1600
 # define MAX_HEIGHT 1000
+# define ZOOM 2.
 
 typedef struct	s_point3d
 {
@@ -78,9 +79,11 @@ void			trace_grid(t_data *data, char option);
 void			proj_iso(t_data *data);
 void			center2camera(t_data *data, int *win_width, int *win_height);
 int				key_hook(int keycode, void *param);
-void			print2screen(void *param, int key);
+int				mouse_hook(int button, int x, int y, void *param);
+void			print2screen(void *param, int key, int x, int y);
 void			translation(t_data *data, int x_off, int z_off);
 void			scale_factor(t_data *data, double factor);
+void			zoom(t_data *data, int x, int y, char option);
 void			rotationX(t_data *data, double angle);
 void			rotationY(t_data *data, double angle);
 void			pixel_put(t_data *data, t_point2d *p, char option);
