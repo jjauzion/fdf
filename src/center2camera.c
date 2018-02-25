@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:43:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 18:46:26 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:04:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ static int			check_scale(t_point2d **tab, int j_max, int i_max,
 	data_height = tab[i_max][j_max].z - tab[0][0].z;
 	*factor = (double)(MAX_WIDTH - 2 * WIN_MARGIN) / data_width;
 	tmp = (double)(MAX_HEIGHT - 2 * WIN_MARGIN) / data_height;
+	if (tmp <= 0 || *factor <= 0)
+	{
+		ft_printf("Error: window margin setting is not compatible with max window size\n");
+		exit(EXIT_FAILURE);
+	}
 	if (tmp < *factor)
 		*factor = tmp;
 	if (*factor < 1.)

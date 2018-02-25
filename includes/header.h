@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 12:36:56 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:57:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ t_point2d		**malloc_tab2(int x_max, int z_max);
 void			free_tab3d(t_point3d ***tab, int z_max);
 void			free_tab2d(t_point2d ***tab, int z_max);
 int				parser(char *file, t_point3d **tab);
-void			print_tab3d(t_point3d **tab, int x_max, int z_max);
-void			print_tab2d(t_point2d **tab, int x_max, int z_max);
 void			display(t_data *data, int width, int height);
 void			trace_grid(t_data *data, char option);
 void			proj_iso(t_data *data);
@@ -104,6 +102,10 @@ void			horizontal_RH_line(t_data *data, t_line line, char option);
 void			horizontal_LH_line(t_data *data, t_line line, char option);
 void			vertical_UP_line(t_data *data, t_line line, char option);
 void			vertical_DW_line(t_data *data, t_line line, char option);
+
+void			print_tab3d(t_point3d **tab, int x_max, int z_max);
+void			print_tab2d(t_point2d **tab, int x_max, int z_max);
+void			print_tab3dxz(t_point3d **tab, int x_max, int z_max);
 
 #endif
 

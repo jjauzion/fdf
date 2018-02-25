@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 17:11:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 12:35:59 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:59:56 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void		scale_factor(t_data *data, double factor)
 		j = -1;
 		while (++j <= data->jmax)
 		{
-			data->tab3[i][j].x = data->tab3[i][j].x * factor;
-			data->tab3[i][j].z = data->tab3[i][j].z * factor;
+			data->tab3[i][j].x = (int)((double)data->tab3[i][j].x * factor);
+			data->tab3[i][j].z = (int)((double)data->tab3[i][j].z * factor);
 		}
 		i--;
 	}
@@ -94,10 +94,18 @@ void		scale_factor(t_data *data, double factor)
 
 void		zoom(t_data *data, int x, int y, char option)
 {
+	int	data_width;
+	int	data_height;
+
 	(void)x;
 	(void)y;
 	if (option == 'i')
 		scale_factor(data, ZOOM);
 	if (option == 'o')
 		scale_factor(data, 1. / ZOOM);
+data_width = ABS((data->tab3[0][0].x - data->tab3[0][1].x));
+data_height = ABS((data->tab3[0][0].z - data->tab3[1][0].z));
+printf("00.x = %d ; 01.x = %d\n", data->tab3[0][0].x, data->tab3[0][1].x);
+printf("00.z = %d ; 01.z = %d\n", data->tab3[0][0].z, data->tab3[1][0].z);
+printf("w = %d ; h = %d\n", data_width, data_height);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 12:36:27 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:23:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	keyhandler(t_data *data, int key)
 
 static void	mousehandler(t_data *data, int key, int x, int y)
 {
-	if (key == 1 && y > 0 && x > 0)
+	if (key == -1 && y > 0 && x > 0)
 		zoom(data, x, y, 'i');
 }
 
