@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:43:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 16:04:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 19:22:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ static t_point2d	**proj_corner(t_data *data)
 	corner3[1][0] = data->tab3[data->imax][0];
 	corner3[1][1] = data->tab3[data->imax][data->jmax];
 	corner3[0][1] = data->tab3[0][data->jmax];
-	tmp.tab3 = corner3;
+	tmp.tab3 = NULL;
+	tmp.transtab3 = corner3;
 	tmp.tab2 = corner2;
 	tmp.imax = 1;
 	tmp.jmax = 1;
-	tmp.height_factor = 1;
+	tmp.init_zoom = data->zoom;
+	init_param(&tmp);
 	proj_iso(&tmp);
 	free_tab3d(&corner3, 1);
 	return (corner2);
@@ -68,10 +70,15 @@ static int			set_window(t_data *data, int *win_width, int *win_height)
 	if (!(corner2 = proj_corner(data)))
 		return (1);
 	if (check_scale(corner2, 1, 1, &factor))
-		scale_factor(data, factor);
-	free_tab2d(&corner2, 1);
-	if (!(corner2 = proj_corner(data)))
-		return (1);
+	{
+		data->zoom = factor;
+		data->init_zoom = factor;
+		free_tab2d(&corner2, 1);
+		if (!(corner2 = proj_corner(data)))
+			return (1);
+	}
+	else
+		data->init_zoom = 1.;
 	*win_width = corner2[0][1].x - corner2[1][0].x + 2 * WIN_MARGIN;
 	*win_height = corner2[1][1].z - corner2[0][0].z + 2 * WIN_MARGIN;
 	free_tab2d(&corner2, 1);
@@ -88,7 +95,7 @@ void				center2camera(t_data *data, int *win_width, int *win_height)
 	set_window(data, win_width, win_height);
 	centerofdata_x = (data->tab3[0][data->jmax].x + data->tab3[data->imax][0].x) / 2;
 	centerofdata_z = (data->tab3[0][data->jmax].z + data->tab3[data->imax][0].z) / 2;
-	translation(data, -centerofdata_x, -centerofdata_z);
+	translation(data, data->tab3, -centerofdata_x, -centerofdata_z);
 	centerofWindow_x = (*win_height + *win_width / 2) / 2;
 	centerofWindow_z = (*win_height - *win_width / 2) / 2;
 	data->x_offset = centerofWindow_x;

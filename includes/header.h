@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 15:57:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 19:08:39 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,18 @@ typedef struct	s_data
 {
 	void		*mlx;
 	void		*win;
-	t_point3d	**tab3;
 	t_point2d	**tab2;
+	t_point3d	**tab3;
+	t_point3d	**transtab3;
 	int			x_offset;
 	int			z_offset;
 	int			imax;
 	int			jmax;
 	int			height_factor;
+	double		zoom;
+	double		init_zoom;
+	int			translation[2];
+	double		rotation[3];
 	char		option;
 	int			**color;
 }				t_data;
@@ -66,7 +71,8 @@ int				ft_rgb2tsv(int rgb, int *t, int *s, int *v);
 int				ft_tsv2rgb(int t, int s, int v);
 
 t_point2d		**init_tab2d(t_point3d **tab3, int jmax, int imax);
-t_point3d		**init_tab3d(char *file, t_data *data);
+int				init_tab3d(char *file, t_data *data);
+void			init_param(t_data *data);
 t_point3d		**malloc_tab3(int x_max, int z_max);
 t_point2d		**malloc_tab2(int x_max, int z_max);
 void			free_tab3d(t_point3d ***tab, int z_max);
@@ -79,11 +85,11 @@ void			center2camera(t_data *data, int *win_width, int *win_height);
 int				key_hook(int keycode, void *param);
 int				mouse_hook(int button, int x, int y, void *param);
 void			print2screen(void *param, int key, int x, int y);
-void			translation(t_data *data, int x_off, int z_off);
-void			scale_factor(t_data *data, double factor);
+void			translation(t_data *data, t_point3d **tab3, int x_off, int z_off);
+void			scale_factor(t_data *data, t_point3d **tab3, double factor);
 void			zoom(t_data *data, int x, int y, char option);
-void			rotationX(t_data *data, double angle);
-void			rotationY(t_data *data, double angle);
+void			rotationX(t_data *data, t_point3d **tab, double angle);
+void			rotationY(t_data *data, t_point3d **tab, double angle);
 void			pixel_put(t_data *data, t_point2d *p, char option);
 int				**color_scale(char *scale_color);
 
@@ -106,6 +112,7 @@ void			vertical_DW_line(t_data *data, t_line line, char option);
 void			print_tab3d(t_point3d **tab, int x_max, int z_max);
 void			print_tab2d(t_point2d **tab, int x_max, int z_max);
 void			print_tab3dxz(t_point3d **tab, int x_max, int z_max);
+void			print_tab2dxz(t_point2d **tab, int x_max, int z_max);
 
 #endif
 

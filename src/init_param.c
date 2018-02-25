@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_hook.c                                       :+:      :+:    :+:   */
+/*   init_param.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 10:33:19 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 19:18:46 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/25 19:03:36 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/25 19:16:06 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		key_hook(int keycode, void *param)
+void	init_param(t_data *data)
 {
-	print2screen(param, keycode, -1, -1);
-	return (0);
-}
-
-int		mouse_hook(int button, int x, int y, void *param)
-{
-	print2screen(param, button * -1, x, y);
-	return(0);
+	data->height_factor = 1;
+	data->translation[0] = 0;
+	data->translation[1] = 0;
+	data->zoom = data->init_zoom;
+	data->rotation[0] = 0;
+	data->rotation[1] = 0;
+	data->rotation[2] = 0;
+	data->option = 0;
 }

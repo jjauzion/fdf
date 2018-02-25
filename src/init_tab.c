@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:04 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 20:28:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:48:34 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,15 @@ t_point3d	**malloc_tab3(int x_max, int z_max)
 	return (tab);
 }
 
-t_point3d	**init_tab3d(char *file, t_data *data)
+int			init_tab3d(char *file, t_data *data)
 {
 	char		*line;
 	int			ret;
 	int			fd;
 	int			tmp;
-	t_point3d	**tab;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-		return (NULL);
+		return (1);
 	data->imax = -1;
 	data->jmax = -1;
 	while ((ret = get_next_line(fd, &line)) > 0)
@@ -96,11 +95,14 @@ t_point3d	**init_tab3d(char *file, t_data *data)
 		if (data->jmax < 0)
 			data->jmax = get_xmax(line);
 		else if ((tmp = get_xmax(line)) != data->jmax)
-			return (NULL);
+			return (1);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	tab = malloc_tab3(data->jmax, data->imax);
+	data->tab3 = malloc_tab3(data->jmax, data->imax);
+	data->transtab3 = malloc_tab3(data->jmax, data->imax);
+	if (!(data->tab3) || !(data->transtab3))
+		return (1);
 	close(fd);
-	return (tab);
+	return (0);
 }

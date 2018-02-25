@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:03:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 14:57:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/25 18:38:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,27 @@ void		print_tab2d(t_point2d **tab, int x_max, int z_max)
 		printf("\n");
 	}
 }
+
+void		print_tab2dxz(t_point2d **tab, int x_max, int z_max)
+{
+	int	i;
+	int	j;
+
+	ft_printf("  x   z   y\n");
+	i = -1;
+	while (++i <= z_max)
+	{
+		j = -1;
+		while (++j <= x_max)
+		{
+			printf("% 6.2f ", tab[i][j].x);
+			printf("% 6.2f ", tab[i][j].z);
+			printf("% 6.2d ", tab[i][j].height);
+			printf("\n");
+		}
+	}
+}
+
 
 void		print_tab3dxz(t_point3d **tab, int x_max, int z_max)
 {
