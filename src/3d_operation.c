@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 17:11:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 11:10:07 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 16:01:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void		scale_factor(t_data *data, t_point3d **tab3, double factor)
 		j = -1;
 		while (++j <= data->jmax)
 		{
-			tab3[i][j].x = (int)((double)tab3[i][j].x * factor);
-			tab3[i][j].z = (int)((double)tab3[i][j].z * factor);
+				tab3[i][j].x = (int)((double)tab3[i][j].x * factor);
+				tab3[i][j].z = (int)((double)tab3[i][j].z * factor);
 		}
 		i--;
 	}

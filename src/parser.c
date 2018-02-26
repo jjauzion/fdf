@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:37 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 15:43:42 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 15:31:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ static int	parse_line(char *line, t_point3d *tab, int z)
 
 	if (!(value = ft_strsplit(line, ' ')))
 		return (1);
+	if (!value[0])
+		return (1);
 	x = 0;
 	while (value[x])
 	{
 		tab[x].x = x * DEF_SCALE;
 		tab[x].z = z * DEF_SCALE;
-		tab[x].y = ft_atoi(value[x]);
+		if (ft_isnumber(value[x]))
+			tab[x].y = ft_atoi(value[x]);
+		else
+			return (1);
 		x++;
 	}
 	while (x >= 0)
@@ -55,6 +60,8 @@ int			parser(char *file, t_point3d **tab)
 		z++;
 		ft_strdel(&line);
 	}
+	if (z == 0)
+		return (1);
 	ft_strdel(&line);
 	close(fd);
 	return (0);

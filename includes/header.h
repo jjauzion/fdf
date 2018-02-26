@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 13:21:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 16:13:19 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct	s_data
 	double		rotation[3];
 	char		option;
 	int			**color;
+	int			win_width;
+	int			win_height;
 }				t_data;
 
 int				ft_rgb2tsv(int rgb, int *t, int *s, int *v);
