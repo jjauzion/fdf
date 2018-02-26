@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/19 09:33:51 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/02/26 17:02:46 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_NAME1 = ft_memset.c \
 			ft_strstr.c \
 			ft_strnstr.c \
 			ft_atoi.c \
-			ft_atolli.c \
+			ft_atoim.c \
 			ft_putchar.c \
 			ft_putnbr.c \
 			ft_isalpha.c \

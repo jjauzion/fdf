@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/19 09:33:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:02:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <wchar.h>
 # include <locale.h>
 # include "get_next_line.h"
+# include <limits.h>
 
 # define ABS(Value) (Value < 0) ? -Value : Value
 # define WRONG_UTF8(c) ((c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF || c < 0)
@@ -53,7 +54,7 @@ char				*ft_strnstr
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
-long long int		ft_atolli(const char *str);
+intmax_t			ft_atoim(const char *str);
 void				ft_putchar(char c);
 void				ft_putnbr(int n);
 int					ft_isalpha(int c);

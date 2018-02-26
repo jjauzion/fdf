@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atolli.c                                        :+:      :+:    :+:   */
+/*   ft_atoim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 15:50:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/13 15:52:35 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/26 16:56:44 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/26 16:56:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long int	ft_atolli(const char *str)
+intmax_t	ft_atoim(const char *str)
 {
 	long long int	nbr;
 	int				sign;
@@ -31,8 +31,8 @@ long long int	ft_atolli(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 	{
-		nbr = nbr * 10 + (long long int)(*str - 48);
+		nbr = nbr * 10 + (intmax_t)(*str - 48);
 		str++;
 	}
-	return (nbr * (long long int)sign);
+	return (nbr * (intmax_t)sign);
 }
