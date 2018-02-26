@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:26:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 11:03:09 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 13:22:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,31 @@ static void	mountains(int **scale)
 	scale[1][5] = 0xFFFFFF;
 }
 
-int			**color_scale(char *scale_color)
+static void	desert(int **scale)
 {
-	int	**scale;
-	int	i;
+	scale[0][0] = 3;
+	scale[0][1] = 0;
+	scale[1][1] = 0xFFB266;
+	scale[0][2] = 0;
+	scale[1][2] = 0xC16100;
+	scale[0][3] = 8;
+	scale[1][3] = 0x693502;
+}
+
+static void	ocean(int **scale)
+{
+	scale[0][0] = 2;
+	scale[0][1] = -5;
+	scale[1][1] = 0x003366;
+	scale[0][2] = 5;
+	scale[1][2] = 0x99CCFF;
+}
+
+int			**color_scale(void)
+{
+	int			**scale;
+	int			i;
+	static int	index = 0;
 
 	if (!(scale = (int**)malloc(sizeof(int*) * 2)))
 		return (NULL);
@@ -38,9 +59,14 @@ int			**color_scale(char *scale_color)
 	while (++i < 2)
 		if (!(scale[i] = (int*)malloc(sizeof(int) * 6)))
 			return (NULL);
-	if (ft_strequ(scale_color, "MOUTAINS"))
+	if (index == 0)
 		mountains(scale);
+	else if (index == 1)
+		desert(scale);
+	else if (index == 2)
+		ocean(scale);
 	else
 		scale[0][0] = 0;
+	index = (index >= 2) ? 0 : index + 1;
 	return (scale);
 }

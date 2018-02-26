@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 19:08:39 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 13:21:02 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void			scale_factor(t_data *data, t_point3d **tab3, double factor);
 void			zoom(t_data *data, int x, int y, char option);
 void			rotationX(t_data *data, t_point3d **tab, double angle);
 void			rotationY(t_data *data, t_point3d **tab, double angle);
-void			pixel_put(t_data *data, t_point2d *p, char option);
-int				**color_scale(char *scale_color);
+void			pixel_put(t_data *data, t_point2d *p, int height, char option);
+int				**color_scale(void);
 
 void			trace_line(t_data *data, t_point2d p1, t_point2d p2, char option);
 void			twd_right_line(t_data *data, t_line line, char option);

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 20:35:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 20:20:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 10:36:12 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	octant_4(t_data *data, t_line line, char option)
 	line.dz = line.dz * 2;
 	while (line.p1->x > line.p2->x)
 	{
-		pixel_put(data, line.p1, option);
+		pixel_put(data, line.p1, ft_max(line.p1->height, line.p2->height), option);
 		line.p1->x -= 1;
 		if ((err = err + line.dz) >= 0)
 		{
@@ -42,7 +42,7 @@ void	octant_3(t_data *data, t_line line, char option)
 	line.dz = line.dz * 2;
 	while (line.p1->z < line.p2->z)
 	{
-		pixel_put(data, line.p1, option);
+		pixel_put(data, line.p1, ft_max(line.p1->height, line.p2->height), option);
 		line.p1->z += 1;
 		if ((err = err + line.dx) <= 0)
 		{
@@ -62,7 +62,7 @@ void	octant_5(t_data *data, t_line line, char option)
 	line.dz = line.dz * 2;
 	while (line.p1->x > line.p2->x)
 	{
-		pixel_put(data, line.p1, option);
+		pixel_put(data, line.p1, ft_max(line.p1->height, line.p2->height), option);
 		line.p1->x -= 1;
 		if ((err = err - line.dz) >= 0)
 		{
@@ -82,7 +82,7 @@ void	octant_6(t_data *data, t_line line, char option)
 	line.dz = line.dz * 2;
 	while (line.p1->z > line.p2->z)
 	{
-		pixel_put(data, line.p1, option);
+		pixel_put(data, line.p1, ft_max(line.p1->height, line.p2->height), option);
 		line.p1->z -= 1;
 		if ((err = err - line.dx) >= 0)
 		{

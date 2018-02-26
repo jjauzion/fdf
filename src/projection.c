@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:43:08 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 18:55:55 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 12:08:53 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	copy_tab3(t_point3d **dest, t_point3d **src, int jmax, int imax)
 
 void		proj_iso(t_data *data)
 {
-	int j;
-	int	i;
+	int		j;
+	int		i;
 	double	x;
 	double	z;
 
@@ -53,7 +53,7 @@ void		proj_iso(t_data *data)
 			z = data->transtab3[i][j].z + data->z_offset;
 			data->tab2[i][j].x = x - z;
 			data->tab2[i][j].z = (x + z) / 2.;
-			data->tab2[i][j].z -= (double)data->transtab3[i][j].y * (double)data->height_factor;
+			data->tab2[i][j].z -= (double)data->transtab3[i][j].y * (double)data->height_factor * data->zoom;
 			data->tab2[i][j].height = data->transtab3[i][j].y;
 		}
 		i--;

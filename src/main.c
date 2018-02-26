@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 20:03:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 19:19:53 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 13:20:09 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 	if (!(data.tab2 = malloc_tab2(data.jmax, data.imax)))
 		return (1);
 	data.init_zoom = 1;
-	data.color = color_scale("MOUTAINS");
+	data.color = color_scale();
 	init_param(&data);
 	center2camera(&data, &win_width, &win_height);
 	display(&data, win_width, win_height);

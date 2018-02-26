@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 11:51:33 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/23 16:50:05 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/02/26 12:39:54 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ static int	get_color(t_data *data, int height)
 	return (color);
 }
 
-void		pixel_put(t_data *data, t_point2d *p, char option)
+void		pixel_put(t_data *data, t_point2d *p, int height, char option)
 {
 	int	color;
 	
-	(void)option;
-	color = (option == 'c') ? get_color(data, p->height) : 0xFFFFFF;
+	color = (option == 'c') ? get_color(data, height) : 0xFFFFFF;
 	mlx_pixel_put(data->mlx, data->win, p->x, p->z, color);
 }
