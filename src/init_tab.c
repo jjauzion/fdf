@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:11:04 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 16:46:34 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 15:01:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_point2d	**malloc_tab2(int x_max, int z_max)
 t_point2d	**init_tab2d(t_point3d **tab3, int x_max, int z_max)
 {
 	t_point2d	**tab2;
-	
-	if(!(tab2 = malloc_tab2(x_max, z_max)))
+
+	if (!(tab2 = malloc_tab2(x_max, z_max)))
 		return (NULL);
 	while (z_max >= 0)
 	{
@@ -62,7 +62,6 @@ t_point2d	**init_tab2d(t_point3d **tab3, int x_max, int z_max)
 	}
 	return (tab2);
 }
-
 
 t_point3d	**malloc_tab3(int x_max, int z_max)
 {

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:09:09 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/23 11:43:05 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:59:42 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	trace_grid(t_data *data, char option)
 	}
 	j = -1;
 	while (++j < data->jmax)
-		trace_line(data, data->tab2[data->imax][j], data->tab2[data->imax][j + 1], option);
+		trace_line(data, data->tab2[data->imax][j],
+				data->tab2[data->imax][j + 1], option);
 }

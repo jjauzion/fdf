@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 11:06:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 16:46:06 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:48:10 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void			print2screen(void *param, int key, int x, int y);
 void			translation(t_data *data, t_point3d **tab3, int x_off, int z_off);
 void			scale_factor(t_data *data, t_point3d **tab3, double factor);
 void			zoom(t_data *data, int x, int y, char option);
-void			rotationX(t_data *data, t_point3d **tab, double angle);
-void			rotationY(t_data *data, t_point3d **tab, double angle);
+void			rotation_x(t_data *data, t_point3d **tab, double angle);
+void			rotation_y(t_data *data, t_point3d **tab, double angle);
 void			pixel_put(t_data *data, t_point2d *p, int height, char option);
 int				**color_scale(void);
 
@@ -106,10 +106,10 @@ void			octant_4(t_data *data, t_line line, char option);
 void			octant_3(t_data *data, t_line line, char option);
 void			octant_5(t_data *data, t_line line, char option);
 void			octant_6(t_data *data, t_line line, char option);
-void			horizontal_RH_line(t_data *data, t_line line, char option);
-void			horizontal_LH_line(t_data *data, t_line line, char option);
-void			vertical_UP_line(t_data *data, t_line line, char option);
-void			vertical_DW_line(t_data *data, t_line line, char option);
+void			horizontal_rh_line(t_data *data, t_line line, char option);
+void			horizontal_lh_line(t_data *data, t_line line, char option);
+void			vertical_up_line(t_data *data, t_line line, char option);
+void			vertical_dw_line(t_data *data, t_line line, char option);
 
 void			print_tab3d(t_point3d **tab, int x_max, int z_max);
 void			print_tab2d(t_point2d **tab, int x_max, int z_max);

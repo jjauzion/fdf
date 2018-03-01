@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:25:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/22 20:26:15 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:01:24 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	rgb_mask(double r, double g, double b, double m)
 	int	ri;
 	int	gi;
 	int	bi;
-	
+
 	ri = (int)((r + m) * 255.);
 	gi = (int)((g + m) * 255.);
 	bi = (int)((b + m) * 255.);
@@ -57,7 +57,7 @@ int			ft_tsv2rgb(int t, int s, int v)
 	else if (t < 120)
 		rgb = rgb_mask(x, c, 0, m);
 	else if (t < 180)
-		rgb = rgb_mask(0 , c, x, m);
+		rgb = rgb_mask(0, c, x, m);
 	else if (t < 240)
 		rgb = rgb_mask(0, x, c, m);
 	else if (t < 300)

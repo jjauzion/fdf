@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:41:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/21 16:15:24 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:59:11 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	twd_right_line(t_data *data, t_line line, char option)
 			octant_7(data, line, option);
 	}
 	else
-		horizontal_RH_line(data, line, option);
+		horizontal_rh_line(data, line, option);
 }
 
 void	twd_left_line(t_data *data, t_line line, char option)
@@ -49,10 +49,10 @@ void	twd_left_line(t_data *data, t_line line, char option)
 			octant_6(data, line, option);
 	}
 	else
-		horizontal_LH_line(data, line, option);
+		horizontal_lh_line(data, line, option);
 }
 
-void	trace_line(t_data *data, t_point2d p1, t_point2d p2,  char option)
+void	trace_line(t_data *data, t_point2d p1, t_point2d p2, char option)
 {
 	t_line	line;
 
@@ -66,7 +66,7 @@ void	trace_line(t_data *data, t_point2d p1, t_point2d p2,  char option)
 	else if (line.dx < 0)
 		twd_left_line(data, line, option);
 	else if (line.dz > 0)
-		vertical_UP_line(data, line, option);
+		vertical_up_line(data, line, option);
 	else if (line.dz < 0)
-		vertical_DW_line(data, line, option);
+		vertical_dw_line(data, line, option);
 }

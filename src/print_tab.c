@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:03:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 18:38:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 15:59:55 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		print_tab2dxz(t_point2d **tab, int x_max, int z_max)
 		}
 	}
 }
-
 
 void		print_tab3dxz(t_point3d **tab, int x_max, int z_max)
 {

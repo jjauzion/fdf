@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/25 19:08:58 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/01 16:06:22 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_NAME1 = main.c \
 			event_hook.c \
 			print2screen.c \
 			trace_grid.c \
-			3d_operation.c \
+			operation_3d.c \
 			ft_rgb2tsv.c \
 			ft_tsv2rgb.c \
 			pixel_put.c \

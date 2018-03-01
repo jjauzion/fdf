@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 12:43:08 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 16:45:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:58:23 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ static void	copy_tab3(t_point3d **dest, t_point3d **src, int jmax, int imax)
 	}
 }
 
+static void	transform_3d(t_data *data)
+{
+	translation(data, data->transtab3, data->translation[0],
+			data->translation[1]);
+	scale_factor(data, data->transtab3, data->zoom);
+	rotation_x(data, data->transtab3, data->rotation[0]);
+	rotation_y(data, data->transtab3, data->rotation[1]);
+}
+
 void		proj_iso(t_data *data)
 {
 	int		j;
@@ -39,10 +48,7 @@ void		proj_iso(t_data *data)
 
 	if (data->tab3)
 		copy_tab3(data->transtab3, data->tab3, data->jmax, data->imax);
-	translation(data, data->transtab3, data->translation[0], data->translation[1]);
-	scale_factor(data, data->transtab3, data->zoom);
-	rotationX(data, data->transtab3, data->rotation[0]);
-	rotationY(data, data->transtab3, data->rotation[1]);
+	transform_3d(data);
 	i = data->imax;
 	while (i >= 0)
 	{
@@ -53,7 +59,8 @@ void		proj_iso(t_data *data)
 			z = data->transtab3[i][j].z + data->z_offset;
 			data->tab2[i][j].x = x - z;
 			data->tab2[i][j].z = (x + z) / 2.;
-			data->tab2[i][j].z -= (double)data->transtab3[i][j].y * (double)data->height_factor * data->zoom;
+			data->tab2[i][j].z -= (double)data->transtab3[i][j].y *
+				(double)data->height_factor * data->zoom;
 			data->tab2[i][j].height = data->transtab3[i][j].y;
 		}
 		i--;

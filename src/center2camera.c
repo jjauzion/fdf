@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 11:43:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/25 19:22:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:18:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int			check_scale(t_point2d **tab, int j_max, int i_max,
 	tmp = (double)(MAX_HEIGHT - 2 * WIN_MARGIN) / data_height;
 	if (tmp <= 0 || *factor <= 0)
 	{
-		ft_printf("Error: window margin setting is not compatible with max window size\n");
+		ft_printf("Error: window margin setting is not ");
+		ft_printf("compatible with max window size\n");
 		exit(EXIT_FAILURE);
 	}
 	if (tmp < *factor)
@@ -87,17 +88,19 @@ static int			set_window(t_data *data, int *win_width, int *win_height)
 
 void				center2camera(t_data *data, int *win_width, int *win_height)
 {
-	int			centerofWindow_x;
-	int			centerofWindow_z;
+	int			centerofwindow_x;
+	int			centerofwindow_z;
 	int			centerofdata_x;
 	int			centerofdata_z;
 
 	set_window(data, win_width, win_height);
-	centerofdata_x = (data->tab3[0][data->jmax].x + data->tab3[data->imax][0].x) / 2;
-	centerofdata_z = (data->tab3[0][data->jmax].z + data->tab3[data->imax][0].z) / 2;
+	centerofdata_x = (data->tab3[0][data->jmax].x +
+			data->tab3[data->imax][0].x) / 2;
+	centerofdata_z = (data->tab3[0][data->jmax].z +
+			data->tab3[data->imax][0].z) / 2;
 	translation(data, data->tab3, -centerofdata_x, -centerofdata_z);
-	centerofWindow_x = (*win_height + *win_width / 2) / 2;
-	centerofWindow_z = (*win_height - *win_width / 2) / 2;
-	data->x_offset = centerofWindow_x;
-	data->z_offset = centerofWindow_z;
+	centerofwindow_x = (*win_height + *win_width / 2) / 2;
+	centerofwindow_z = (*win_height - *win_width / 2) / 2;
+	data->x_offset = centerofwindow_x;
+	data->z_offset = centerofwindow_z;
 }
