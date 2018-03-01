@@ -8,7 +8,7 @@ make
 
 ## run
 
-./fdf <map>
+./fdf *map_file*
 
 ## keys
 
