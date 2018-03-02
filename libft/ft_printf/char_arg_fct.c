@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 15:17:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 15:23:58 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:13:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			ft_char_arg(t_var var, t_spec *spec)
 			spec->width = -1;
 			return (1);
 		}
-		if (MB_CUR_MAX < ft_getnbofutf8byte(var.wc))
+		if ((int)MB_CUR_MAX < ft_getnbofutf8byte(var.wc))
 		{
 			if (var.wc < 256)
 				spec->v_char = (char)var.wc;

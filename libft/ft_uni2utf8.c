@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:46:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/29 15:29:35 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:14:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_get_octet(wchar_t c)
 	if (WRONG_UTF8(c))
 		return (-1);
 	nb_octet = ft_getnbofutf8byte(c);
-	if (MB_CUR_MAX < nb_octet)
+	if ((int)MB_CUR_MAX < nb_octet)
 	{
 		if (c > 127 && c < 256)
 		{
