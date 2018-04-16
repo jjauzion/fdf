@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/01 16:06:22 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/04/16 18:31:22 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ LIB_PATH = libft/
 
 LDLIBS = libftprintf.a
 
-EXT_LIB = -L /usr/local/lib/ -lmlx \
+EXT_LIB = -L minilibx -lmlx \
 		  -framework OpenGL -framework AppKit
 
 INC_PATH1 = libft/
