@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:15:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/04/16 18:41:53 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:33:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void	keyhandler(t_data *data, int key)
 
 static void	mousehandler(t_data *data, int key, int x, int y)
 {
-	if (key == -1 && y > 0 && x > 0)
-		data->zoom = data->zoom * ZOOM;
+	(void)data;
+	(void)key;
+	(void)x;
+	(void)y;
 }
 
 void		print2screen(void *param, int key, int x, int y)

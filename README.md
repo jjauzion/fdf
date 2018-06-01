@@ -25,8 +25,8 @@ l | -z axis rotation
 j | zoom out
 k | zoom in
 r | 90° rotation around z
-i (or -) | height factor increase
-o (or +) | height factor decrease
+i (or -) | height factor decrease
+o (or +) | height factor increase
 c | enable / disable color
 x | change color scale
 space bar | reset view
