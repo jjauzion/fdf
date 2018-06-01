@@ -34,6 +34,6 @@ esc | close window & exit program
 
 ## map 42
 
-![alt text](https://github.com/kylax/fdf/master/img/img.png)
+[[https://github.com/kylax/fdf/master/img/img.png|alt=42]]
 
 ## map France
