@@ -6,11 +6,15 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:26:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/26 13:22:22 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/05/21 11:42:11 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+/*
+** Color scale[0][0] contains the number of threshold
+*/
 
 static void	mountains(int **scale)
 {

@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/02/26 17:02:46 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/05/20 14:42:27 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -184,11 +184,11 @@ $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $(NAME)
 
-$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC)
+$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC) Makefile
 	@mkdir $(OBJ_PATH1) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
-$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(INC)
+$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(INC) Makefile
 	@mkdir $(OBJ_PATH2) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 

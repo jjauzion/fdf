@@ -1,9 +1,8 @@
 # 42-FdF
-Ce projet consiste à créer graphiquement la representation schématique d’un terrain en relief en reliant différents points (x, y, z) par des droites. Les
-coordonnées du terrain seront stockées dans un fichier passé en paramètre.
+This program generates a wire frame pseudo-3D model of the map provided in input. Exemples of map are provided in the map directory.
 
 ## compatibility
-Mac OS (Minilibx required)
+Mac OS
 
 ## compile
 
@@ -31,8 +30,10 @@ o (or +) | height factor decrease
 c | enable / disable color
 x | change color scale
 space bar | reset view
-esc | close window
+esc | close window & exit program
 
 ## map 42
+
+![alt text](https://github.com/kylax/fdf/master/img/img.png)
 
 ## map France
