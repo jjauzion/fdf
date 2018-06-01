@@ -37,3 +37,5 @@ esc | close window & exit program
 ![alt text](https://raw.githubusercontent.com/kylax/fdf/master/img/42.png)
 
 ## map France
+
+![alt text](https://raw.githubusercontent.com/kylax/fdf/master/img/france.png)
