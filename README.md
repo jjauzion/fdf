@@ -10,7 +10,7 @@ make
 
 ## run
 
-./fdf *map_file*
+./fdf *map_file* 
 
 ## keys
 
