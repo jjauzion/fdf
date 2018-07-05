@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, clean, fclean, re, LIB
+.PHONY: all, clean, fclean, re, LIB, MLXLIB
 
 SRC_NAME1 = main.c \
 			trace_line.c \
@@ -90,13 +90,16 @@ LDFLAGS = $(addprefix $(LIB_PATH),$(LDLIBS))
 CPPFLAGS = $(addprefix -I,$(INC_PATH1)) \
 		   $(addprefix -I,$(INC_PATH2))
 
-all: LIB $(NAME)
+all: LIB MLXLIB $(NAME)
 
 $(NAME): $(LDFLAGS) $(OBJ1) $(OBJ2)
 	$(CC) $(DBFLAGS) $(LDFLAGS) $(EXT_LIB) $(OBJ1) $(OBJ2) -o $(NAME)
 
 LIB:
 	make -C libft
+
+MLXLIB:
+	make -C minilibx
 
 $(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC) Makefile
 	@mkdir $(OBJ_PATH1) 2> /dev/null || true
